@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import Home from './componentes/Home/home';
+import ListaProductos from './componentes/Lista_Productos/ListaProductos';
+import DetallesProducto from './componentes/Detalles_Producto/DetallesProducto';
+import Registrarse from './componentes/registrarse/registrarse';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter basename='mi-app'> 
+        <Routes>
+          <Route path='/' element={<Home/>} />
+          <Route path='/listaProductos' element={<ListaProductos/>} />
+          <Route path='/detallesProductos' element={<DetallesProducto/>} />
+          <Route path='/registrarse' element={<Registrarse/>}/>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

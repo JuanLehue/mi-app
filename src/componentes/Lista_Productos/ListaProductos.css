@@ -1,0 +1,9 @@
+.contenedor{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.titulo{
+    color: red;
+}
