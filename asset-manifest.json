@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/JuanLehue/mi-app/static/css/main.e64ca5dc.css",
-    "main.js": "/JuanLehue/mi-app/static/js/main.d7b9c3c1.js",
-    "static/js/787.fc6c31ee.chunk.js": "/JuanLehue/mi-app/static/js/787.fc6c31ee.chunk.js",
-    "index.html": "/JuanLehue/mi-app/index.html",
-    "main.e64ca5dc.css.map": "/JuanLehue/mi-app/static/css/main.e64ca5dc.css.map",
-    "main.d7b9c3c1.js.map": "/JuanLehue/mi-app/static/js/main.d7b9c3c1.js.map",
-    "787.fc6c31ee.chunk.js.map": "/JuanLehue/mi-app/static/js/787.fc6c31ee.chunk.js.map"
+    "main.css": "/mi-app/static/css/main.5838385f.css",
+    "main.js": "/mi-app/static/js/main.8c69788b.js",
+    "static/js/787.fc6c31ee.chunk.js": "/mi-app/static/js/787.fc6c31ee.chunk.js",
+    "index.html": "/mi-app/index.html",
+    "main.5838385f.css.map": "/mi-app/static/css/main.5838385f.css.map",
+    "main.8c69788b.js.map": "/mi-app/static/js/main.8c69788b.js.map",
+    "787.fc6c31ee.chunk.js.map": "/mi-app/static/js/787.fc6c31ee.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e64ca5dc.css",
-    "static/js/main.d7b9c3c1.js"
+    "static/css/main.5838385f.css",
+    "static/js/main.8c69788b.js"
   ]
 }
