@@ -1,166 +1,74 @@
-import React from "react";
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./registrarse.css";
-import NavBar from "../Navbar/NavBar";
 
-class registrarse extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: "" };
+function FormExample() {
+  const [validated, setValidated] = useState(false);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
+    setValidated(true);
+  };
 
-  handleSubmit(event) {
-    alert(
-      "Hola " +
-        this.state.value +
-        ", el registro se completo correctamente. Gracias!!"
-    );
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <>
-        <NavBar />
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Nombre:
-            <input
+  return (
+    <section className="formulario">
+      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <Row className="mb-3">
+          <Form.Group as={Col} md="4" controlId="validationCustom01">
+            <Form.Label>First name</Form.Label>
+            <Form.Control
+              required
               type="text"
-              value={this.state.value}
-              onChange={this.handleChange}
+              placeholder="First name"
+              defaultValue="Mark"
             />
-          </label>
-          <div name="error_nombre"></div>
-          <input type="submit" value="Submit" />
-        </form>
-      </>
-    );
-  }
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group as={Col} md="4" controlId="validationCustom02">
+            <Form.Label>Last name</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              placeholder="Last name"
+              defaultValue="Otto"
+            />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          </Form.Group>
+        </Row>
+        <Form.Group as={Col} md="4" controlId="validationCustomUsername">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Email"
+            aria-describedby="inputGroupPrepend"
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            Please choose a username.
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Row className="mb-3"></Row>
+        <Form.Group className="mb-3">
+          <Form.Check
+            required
+            label="Agree to terms and conditions"
+            feedback="You must agree before submitting."
+            feedbackType="invalid"
+          />
+        </Form.Group>
+        <Button type="submit">Enviar</Button>
+      </Form>
+    </section>
+  );
 }
 
-// function registrarse() {
-//   return (
-//     <>
-//       <NavBar />
-//       <form class="form_contacto" onsubmit={obtenerDatos()}>
-//         <div className="mb-3">
-//           <label className="form-label">Nombre *</label>
-//           <input
-//             type="text"
-//             className="form-control"
-//             id="nombre"
-//             name="nombre"
-//             onkeyup={validar(this)}
-//           />
-//           <div id="error_nombre" className="error_message">
-//             {" "}
-//           </div>
-//         </div>
-//         <div className="mb-3">
-//           <label className="form-label">Apellido *</label>
-//           <input
-//             type="text"
-//             className="form-control"
-//             id="apellido"
-//             name="apellido"
-//             onkeyup={validar(this)}
-//           />
-//           <div id="error_apellido" className="error_message">
-//             {" "}
-//           </div>
-//         </div>
-//         <div className="mb-3">
-//           <label class="form-label">Email *</label>
-//           <input
-//             type="email"
-//             className="form-control"
-//             id="email"
-//             name="email"
-//             onkeyup={validar(this)}
-//           />
-//           <div id="error_email" className="error_message">
-//             {" "}
-//           </div>
-//         </div>
-//         <div className="mb-3">
-//           <label className="form-label">Contraseña *</label>
-//           <textarea
-//             className="form-control"
-//             id="contraseña"
-//             name="contraseña"
-//             rows="3"
-//             onkeyup={validar(this)}
-//           ></textarea>
-//           <div id="error_asunto" className="error_message">
-//             {" "}
-//           </div>
-//         </div>
-//         <button
-//           type="submit"
-//           className="btn btn-primary"
-//           id="botonEnviar"
-//           name="botonEnviar"
-//           disabled
-//         >
-//           Enviar
-//         </button>
-//       </form>
-//     </>
-//   );
-// }
-
-// function validar(elem) {
-//   const value = elem.value;
-//   const name = elem.name;
-
-//   if (value === "") {
-//     document.getElementById("error_" + name).innerHTML =
-//       "Este campo es obligatorio";
-//   } else {
-//     document.getElementById("error_" + name).innerHTML = "";
-//   }
-//   confirmar();
-// }
-
-// function confirmar() {
-//   const nombre = document.getElementById("nombre").value;
-//   const apellido = document.getElementById("apellido").value;
-//   const email = document.getElementById("email").value;
-//   const contraseña = document.getElementById("contraseña").value;
-
-//   if (nombre && apellido && email && contraseña !== "") {
-//     document.getElementById("botonEnviar").disabled = false;
-//   }
-// }
-
-// const getMensaje = () => {
-//   const http = new XMLHttpRequest();
-//   http.onreadystatechange = () => {
-//     if (http.readyState === 4 && http.status === 200) {
-//       document.getElementById("mensaje").innerHTML = http.responseText;
-//     }
-//   };
-//   //Request
-//   http.open("GET", "http://localhost:3000/mi-app/registrarse", true);
-//   http.send();
-// };
-
-// function obtenerDatos() {
-//   const nombre = document.getElementById("nombre").value.trim();
-//   const apellido = document.getElementById("apellido").value.trim();
-//   const email = document.getElementById("email").value.trim();
-//   const contraseña = document.getElementById("contraseña").value.trim();
-
-//   if (nombre && apellido && email && contraseña !== "") {
-//     getMensaje();
-//   }
-// }
-
-export default registrarse;
+export default FormExample;
