@@ -4,6 +4,7 @@ import Home from "./componentes/Home/home";
 import ListaProductos from "./componentes/Lista_Productos/ListaProductos";
 import DetallesProducto from "./componentes/Detalles_Producto/DetallesProducto";
 import Registrarse from "./componentes/registrarse/registrarse";
+import Login from "./componentes/Login/login";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/listaProductos" element={<ListaProductos />} />
           <Route path="/detallesProductos/:id" element={<DetallesProducto />} />
           <Route path="/registrarse" element={<Registrarse />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </>

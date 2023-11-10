@@ -13,7 +13,7 @@ function NavBar() {
         <h2>Logo</h2>
         <div>
           <Link>Carrito</Link>
-          <Link>Usuario</Link>
+          <Link to="/login">Usuario</Link>
         </div>
       </div>
     </>

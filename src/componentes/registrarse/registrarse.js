@@ -1,74 +1,68 @@
-import { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./registrarse.css";
+import NavBar from "../Navbar/NavBar";
+import { useForm } from "react-hook-form";
 
-function FormExample() {
-  const [validated, setValidated] = useState(false);
+function Registrarse() {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
 
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    setValidated(true);
+  const onSubmit = (data) => {
+    console.log(data);
   };
 
   return (
-    <section className="formulario">
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Row className="mb-3">
-          <Form.Group as={Col} md="4" controlId="validationCustom01">
-            <Form.Label>First name</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              placeholder="First name"
-              defaultValue="Mark"
-            />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md="4" controlId="validationCustom02">
-            <Form.Label>Last name</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              placeholder="Last name"
-              defaultValue="Otto"
-            />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group>
-        </Row>
-        <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
+    <>
+      <NavBar />
+      <div className="container">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <h2>Registrarse</h2>
+          <label>Nombre</label>
+          <input type="text" {...register("nombre", { required: true })} />
+          <label>Email</label>
+          <input
             type="email"
-            placeholder="Email"
-            aria-describedby="inputGroupPrepend"
-            required
+            {...register(
+              "email",
+              { required: true },
+              { pattern: /\S+@\S+\.\S+/ }
+            )}
           />
-          <Form.Control.Feedback type="invalid">
-            Please choose a username.
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Row className="mb-3"></Row>
-        <Form.Group className="mb-3">
-          <Form.Check
-            required
-            label="Agree to terms and conditions"
-            feedback="You must agree before submitting."
-            feedbackType="invalid"
+          <label>Contraseña</label>
+          <input
+            type="password"
+            {...register("password", { required: true })}
           />
-        </Form.Group>
-        <Button type="submit">Enviar</Button>
-      </Form>
-    </section>
+          <div>
+            <input
+              type="checkbox"
+              {...register("condiciones", { required: true })}
+            />
+            <label>Acepto Terminos y Condiciones</label>
+            {errors.condiciones?.type === "required" && (
+              <p className="error-msg">Campo obligatorio</p>
+            )}
+          </div>
+          <div>
+            <input type="checkbox" {...register("noticias")} />
+            <label>Quiero recibir noticias nuevas</label>
+          </div>
+          {(errors.nombre?.type === "required" && (
+            <p className="error-msg">Completa todos los campos</p>
+          )) ||
+            (errors.email?.type === "required" && (
+              <p className="error-msg">Completa todos los campos</p>
+            )) ||
+            (errors.password?.type === "required" && (
+              <p className="error-msg">Completa todos los campos</p>
+            ))}
+          <input type="submit" value="Enviar" className="btn-enviar" />
+        </form>
+      </div>
+    </>
   );
 }
 
-export default FormExample;
+export default Registrarse;
