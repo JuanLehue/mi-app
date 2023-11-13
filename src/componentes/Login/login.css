@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.flecha{
+    color: black;
+    position: relative;
+    top: -15px;
+    left: -15px;
+    font-size: 18px;
+    transition: all 0.2s;
+}
+
+.flecha:hover{
+    color: white;
+}

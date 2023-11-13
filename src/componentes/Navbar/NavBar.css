@@ -1,6 +1,6 @@
 .NavContainer{
     padding: 0.4rem;
-    background-color: #333;
+    background-color: #464646;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -9,4 +9,10 @@
 .NavContainer h2 {
 color: white;
 font-weight: 400;
+}
+
+.item{
+    color: white;
+    padding: 10px;
+    font-size: 22px;
 }

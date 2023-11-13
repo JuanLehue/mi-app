@@ -1,6 +1,10 @@
+import React from "react";
 import "./registrarse.css";
 import NavBar from "../Navbar/NavBar";
 import { useForm } from "react-hook-form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function Registrarse() {
   const {
@@ -18,6 +22,9 @@ function Registrarse() {
       <NavBar />
       <div className="container">
         <form onSubmit={handleSubmit(onSubmit)}>
+          <Link to="/login">
+            <FontAwesomeIcon icon={faArrowLeft} className="flecha" />
+          </Link>
           <h2>Registrarse</h2>
           <label>Nombre</label>
           <input type="text" {...register("nombre", { required: true })} />
