@@ -2,12 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCartShopping,
-  faHome,
-  faShirt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faHome } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
+import Logo from "./img/LogoBlanco.png";
 
 function NavBar() {
   return (
@@ -17,11 +14,8 @@ function NavBar() {
           <Link to="/" className="item">
             <FontAwesomeIcon icon={faHome} />
           </Link>
-          <Link to="/listaProductos" className="item">
-            <FontAwesomeIcon icon={faShirt} />
-          </Link>
         </div>
-        <h2>Logo</h2>
+        <img src={Logo} alt="logo" className="logo" />
         <div>
           <Link to="/login" className="item">
             <FontAwesomeIcon icon={faUser} />
