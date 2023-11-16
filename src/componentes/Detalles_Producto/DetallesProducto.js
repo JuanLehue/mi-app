@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./DetallesProducto.css";
 import NavBar from "../Navbar/NavBar";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import MiFooter from "../Footer/MiFooter";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 function DetallesProducto() {
   const { id } = useParams();
@@ -23,14 +25,26 @@ function DetallesProducto() {
   }, [id]);
 
   if (loading) {
-    return <div>Cargando...</div>;
+    return (
+      <div className="container-cargando">
+        <h2 className="title-cargando">Cargando...</h2>
+      </div>
+    );
   } else {
     return (
       <>
         <NavBar />
         <div className="container-detallesProducto">
           <div className="container-title">
-            <h2> {producto.title} </h2>
+            <h2>
+              <Link to="/">
+                <FontAwesomeIcon
+                  icon={faArrowLeft}
+                  className="flecha-detalles"
+                />
+              </Link>{" "}
+              {producto.title}{" "}
+            </h2>
           </div>
           <main className="detallesProducto">
             <div className="container-img-detalles">

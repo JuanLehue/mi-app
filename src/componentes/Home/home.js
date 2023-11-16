@@ -28,14 +28,18 @@ function Home() {
         <div className="banner">
           <div className="container-inicio">
             <h2 className="title-home">Bienvenido</h2>
-            <p className="descripcion-home">Descripcion</p>
+            <p className="descripcion-home">
+              Disfruta de todos nuestros productos
+            </p>
           </div>
         </div>
         <div className="container-info-lista">
           <h2 className="title-listaProducto">Productos</h2>
         </div>
         {loading ? (
-          <p>Cargando Productos...</p>
+          <div className="container-cargando">
+            <h2 className="title-cargando">Cargando...</h2>
+          </div>
         ) : (
           <ul className="listaProductos">
             {productos.map((producto) => (
